@@ -73,7 +73,41 @@
   }
 
   .body {
-    padding: 12px;
+    padding: 4vw;
+    position: relative;
+    height: 80%;
+
+    .results {
+      overflow: auto;
+      display: none;
+      width: 92vw;
+      height: 100%;
+      font-size: 14px;
+      position: absolute;
+      background: #fff;
+
+      .result {
+        width: 92vw;
+        height: 40px;
+        line-height: 40px;
+        text-indent: 16px;
+        border-bottom: 1px solid #eee;
+
+        .hight-light {
+          color: #3bbcff;
+        }
+      }
+    }
+
+    .history {
+      .clear-history {
+        float: right;
+        background: #fff;
+        margin: 4px;
+        outline: none;
+      }
+    }
+
     .search-info {
       .tit {
         font-size: 16px;
@@ -84,9 +118,10 @@
       .infos {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: flex-start;
 
         .info {
+          margin: 6px 4vw 0 0;
           width: 28vw;
           height: 32px;
           text-align: center;
@@ -94,6 +129,13 @@
           background: #f2f2f2;
           border-radius: 16px;
           font-size: 14px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .info:nth-child(3n) {
+          margin-right: 0;
         }
       }
     }
