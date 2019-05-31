@@ -6,31 +6,49 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ahab-weather</title>
 </head>
-<body>
-  <main class="container web-font">
-    <div class="search-page">
-      <div class="header">
-        <div class="search-wrap">
-          <input type="text" id="search" />
-        </div>
-        <button type="button">取消</button>
+<body class="web-font">
+  <div class="search-page">
+    <div class="header">
+      <div class="search-wrap">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="search" placeholder="搜索地区/景点" />
       </div>
+      <button class="cancel" type="button">取消</button>
+    </div>
 
-      <div class="body">
-        <div class="history search-info">
-          <div class="tit">历史记录</div>
-          <div class="info"></div>
+    <div class="body">
+      <div class="history search-info">
+        <div class="tit">历史记录</div>
+        <div class="infos">
         </div>
-        <div class="hot-city search-info">
-          <div class="tit">热门城市</div>
-          <div class="info"></div>
+      </div>
+      <div class="hot-city search-info">
+        <div class="tit">热门城市</div>
+        <div class="infos">
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="main-page">
-
+  <div class="main-page">
+    <div class="now">
+      <div class="tip">
+        <p class="aqi">62</p>
+        <p class="status">两</p>
+      </div>
+      <button class="drop" id="position"><span class="iconfont icon-location"></span>重庆</button>
+      <div class="now-info-wrap">
+        <div class="now-temp">22</div>
+        <div>
+          <div class="now-weather">晴</div>
+          <div class="now-info">
+            <p class="show">湿度 25%</p>
+            <p class="hide">西风 2 级</p>
+          </div>
+        </div>
+        <p class="now-desc">现在的温度比较合适</p>
+      </div>
     </div>
-  </main>
+  </div>
 </body>
 </html>
