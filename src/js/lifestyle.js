@@ -47,11 +47,11 @@ export default class lifestyle extends HTMLElement {
       }
 
       .icon {
-        background: url(${icon});
-        background-size: cover;
+        background: url(${icon}) no-repeat;
+        background-size: 100%;
         background-position: center;
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
         margin-top: 8vw;
       }
 

@@ -51,7 +51,6 @@ cancel.addEventListener('click', e => {
 const search = document.querySelector('#search')
 const results = document.querySelector('.results')
 
-
 // 清楚搜索历史
 const historyInfos = document.querySelector('.history>.infos')
 const clearHistory = document.querySelector('.clear-history')
