@@ -80,9 +80,19 @@ async function getTwoRecent(location) {
 }
 
 
+// 获取 7 天天气和 hourly
+async function getWeekAndHourlyData(location) {
+  const json = await fetch(`https://www.tianqiapi.com/api/?version=v1&city=${location}`).then(res => res.json())
+  return json
+}
+
+
 export default {
   search: getSearch,
   now: getNow,
   twoRecent: getTwoRecent,
   hotCity: getHotCity,
+  weekData: getWeekAndHourlyData,
+  hourlyData: getWeekAndHourlyData,
+  set: getSetByDesc,
 }

@@ -1,4 +1,5 @@
 import GetDataUtil from './get-data.js'
+import displayChart from './chart.js'
 
 // 展示 now 数据
 const nowTemp = document.querySelector('.now-temp')
@@ -63,6 +64,9 @@ async function displayResult(result) {
 
     const twoRecentData = await GetDataUtil.twoRecent(result)
     displayTwoRecent(twoRecentData)
+
+    const weekData = await GetDataUtil.weekData(result)
+    displayWeek(weekData)
     cancel.click()
   } catch {
     alert('获取数据失败 😢...')
@@ -96,6 +100,41 @@ async function displaySearchResult() {
 }
 
 
+// 展示 7 天天气
+const chartTop = document.querySelector('.chart-top')
+const chartBottom = document.querySelector('.chart-bottom')
+
+function displayWeek(json) {
+  let topHtml = ''
+  let bottomHtml = ''
+  const maxArr = []
+  const minArr = []
+  json.data.forEach(info => {
+    const set = GetDataUtil.set(info.wea)
+    topHtml += `
+      <div class="top-item">
+        <div class="day">${info.day.slice(3, 5)}</div>
+        <div class="date">${info.date}</span></div>
+        <span class="iconfont ${set.iconClass}"></span>
+      </div>`
+    
+    bottomHtml += `
+    <div class="bottom-item">
+      <div class="weather">${info.wea}</div>
+      <div class="wind">${info.win[0]}${info.win_speed}</div>
+    </div>`
+
+    maxArr.push(info.tem1.slice(0, 2))
+    minArr.push(info.tem2.slice(0, 2))
+  })
+
+  chartTop.innerHTML = topHtml
+  chartBottom.innerHTML = bottomHtml
+
+  displayChart(maxArr, minArr)
+}
+
+
 // 展示搜索历史
 const historyInfos = document.querySelector('.history>.infos')
 
@@ -111,6 +150,7 @@ function displayHistory() {
 function hasStorage() {
   return window.localStorage.cqNowData
     && window.localStorage.cqTwoRecentData
+    && window.localStorage.cqWeekData
 }
 
 async function firstDisplay() {
@@ -120,19 +160,26 @@ async function firstDisplay() {
   const location = '重庆'
   let cqNowData
   let cqTwoRecentData
+  let cqWeekData
 
   if (hasStorage()) {
     cqNowData = JSON.parse(window.localStorage.cqNowData)
     cqTwoRecentData = JSON.parse(window.localStorage.cqTwoRecentData)
+    cqWeekData = JSON.parse(window.localStorage.cqWeekData)
   } else {
     cqNowData = await GetDataUtil.now(location)
     window.localStorage.cqNowData = JSON.stringify(cqNowData)
+
     cqTwoRecentData = await GetDataUtil.twoRecent(location)
     window.localStorage.cqTwoRecentData = JSON.stringify(cqTwoRecentData)
+
+    cqWeekData = await GetDataUtil.weekData(location)
+    window.localStorage.cqTwoRecentData = JSON.stringify(cqWeekData)
   }
 
   displayNow(cqNowData)
   displayTwoRecent(cqTwoRecentData)
+  displayWeek(cqWeekData)
 }
 
 

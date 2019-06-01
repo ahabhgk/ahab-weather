@@ -1,7 +1,6 @@
 import '../style/font/iconfont.css'
 import '../style/style.scss'
 import DisplayUtil from './display-data.js'
-import chart from './chart.js'
 
 
 // 页面加载好后的处理
