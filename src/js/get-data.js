@@ -33,6 +33,7 @@ async function getHotCity() {
 // 天气图标、背景和描述处理
 function getSetByDesc(description) {
   const set = {}
+
   if (description.includes('晴')) {
     set.bg = clear
     set.iconClass = 'icon-clear'
@@ -58,6 +59,7 @@ function getSetByDesc(description) {
     set.iconClass = 'icon-thunder'
     set.desc = '小心装逼遭雷劈哦～'
   }
+
   return set
 }
 

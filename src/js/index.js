@@ -1,12 +1,14 @@
 import '../style/font/iconfont.css'
 import '../style/style.scss'
 import DisplayUtil from './display-data.js'
+import Lifestyle from './lifestyle.js'
 
 
 // 页面加载好后的处理
 async function ready() {
   document.body.style.height = `${document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight}px`
   document.querySelector('.search-page').style.transition = 'all .6s'
+  customElements.define('h-lifestyle', Lifestyle);
   await DisplayUtil.firstDisplay()
 }
 
@@ -70,3 +72,40 @@ searchPage.addEventListener('click', e => {
     results.style.display = 'none'
   }
 })
+
+// 下方 lifestyle 的滑动
+const slideWrap = document.querySelector('.slide-wrap')
+
+let startX
+let spanX = 0
+let endX = 0
+function handleSlide(e) {
+  switch (e.type) {
+  case 'touchstart':
+    startX = e.targetTouches[0].pageX
+    break
+  case 'touchmove':
+    e.preventDefault()
+    spanX = e.changedTouches[0].pageX - startX
+    const offset = spanX + endX
+    if (offset <= 0 && offset >= -document.body.offsetWidth) {
+      this.style.left = `${offset}px`
+    }
+    break
+  case 'touchend':
+    if (endX + spanX > 0) {
+      endX = 0
+      this.style.left = '0px'
+    } else if (endX + spanX < -document.body.offsetWidth) {
+      endX = -document.body.offsetWidth
+      this.style.left = `${-document.body.offsetWidth}px`
+    } else {
+      endX += spanX
+    }
+    break
+  }
+}
+
+slideWrap.addEventListener('touchstart', handleSlide)
+slideWrap.addEventListener('touchmove', handleSlide)
+slideWrap.addEventListener('touchend', handleSlide)

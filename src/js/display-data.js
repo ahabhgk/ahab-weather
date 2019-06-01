@@ -135,6 +135,23 @@ function displayWeek(json) {
 }
 
 
+// 展示 hourly 数据
+const hourlyWrap = document.querySelector('.hourly-wrap')
+
+function displayHourly(json) {
+  const html = json.data[0].hours.map(hour => {
+    const set = GetDataUtil.set(hour.wea)
+    return `
+      <div class="hour">
+        <div class="time">${hour.day.slice(3)}</div>
+        <span class="iconfont ${set.iconClass}"></span>
+        <div class="temp">${hour.tem}</div>
+      </div>
+  `}).join('')
+  hourlyWrap.innerHTML = html
+}
+
+
 // 展示搜索历史
 const historyInfos = document.querySelector('.history>.infos')
 
@@ -147,39 +164,20 @@ function displayHistory() {
 }
 
 
-function hasStorage() {
-  return window.localStorage.cqNowData
-    && window.localStorage.cqTwoRecentData
-    && window.localStorage.cqWeekData
-}
-
 async function firstDisplay() {
   GetDataUtil.hotCity()
   displayHistory()
 
   const location = '重庆'
-  let cqNowData
-  let cqTwoRecentData
-  let cqWeekData
-
-  if (hasStorage()) {
-    cqNowData = JSON.parse(window.localStorage.cqNowData)
-    cqTwoRecentData = JSON.parse(window.localStorage.cqTwoRecentData)
-    cqWeekData = JSON.parse(window.localStorage.cqWeekData)
-  } else {
-    cqNowData = await GetDataUtil.now(location)
-    window.localStorage.cqNowData = JSON.stringify(cqNowData)
-
-    cqTwoRecentData = await GetDataUtil.twoRecent(location)
-    window.localStorage.cqTwoRecentData = JSON.stringify(cqTwoRecentData)
-
-    cqWeekData = await GetDataUtil.weekData(location)
-    window.localStorage.cqTwoRecentData = JSON.stringify(cqWeekData)
-  }
+  let cqNowData = await GetDataUtil.now(location)
+  let cqTwoRecentData = await GetDataUtil.twoRecent(location)
+  let cqWeekData = await GetDataUtil.weekData(location)
+  let cqHourlyData = await GetDataUtil.hourlyData(location)
 
   displayNow(cqNowData)
   displayTwoRecent(cqTwoRecentData)
   displayWeek(cqWeekData)
+  displayHourly(cqHourlyData)
 }
 
 

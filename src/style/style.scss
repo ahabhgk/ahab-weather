@@ -322,10 +322,36 @@ body {
     }
   }
 
+  .hourly {
+    margin-bottom: 10px;
+    width: 100vw;
+    padding: 30px 0;
+    overflow: auto;
+    background: #fff;
+    display: flex;
+
+    .hourly-wrap {
+      display: flex;
+      
+      .hour {
+        width: 60px;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .time, span, .temp {
+          text-align: center;
+        }
+      }
+    }
+  }
+
   .chart {
     overflow: auto;
     width: 100vw;
     background: #fff;
+    margin-bottom: 10px;
 
     .chart-wrap {
       font-size: 0;
@@ -396,6 +422,21 @@ body {
           border: none;
         }
       }
+    }
+  }
+
+  .slide {
+    width: 100vw;
+    height: 50vw;
+    overflow: hidden;
+    position: relative;
+
+    .slide-wrap {
+      width: 200vw;
+      display: flex;
+      justify-content: space-around;
+      position: absolute;
+      left: 0;
     }
   }
 }
