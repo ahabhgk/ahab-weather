@@ -1,5 +1,7 @@
 # ahab-weather
 
+[ahabhgk.top/ahab-weather](ahabhgk.top/ahab-weather)
+
 ## 凌晨后在看，和风的接口免费次数 6.1 的用完了。🔨
 
 **基本信息**  
