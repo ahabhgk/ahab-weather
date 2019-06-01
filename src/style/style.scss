@@ -145,7 +145,6 @@
 .main-page {
   .now {
     height: 70vh;
-    background-image: url(../img/clear.jpg);
     background-size: cover;
     position: relative;
 
@@ -163,6 +162,7 @@
 
     .tip {
       position: absolute;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
       top: 60px;
       left: 10px;
       background: #f0cb35;
@@ -181,7 +181,7 @@
 
     .now-info-wrap {
       width: 100vw;
-      height: 200px;
+      height: 215px;
       margin-top: 55px;
       display: flex;
       flex-direction: column;
@@ -206,12 +206,19 @@
       }
 
       .now-info {
-        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        font-size: 0;
         height: 20px;
-        width: 70px;
+        width: 100px;
         text-align: center;
         overflow: hidden;
         position: relative;
+
+        .txt {
+          font-size: 14px;
+          text-align: center;
+        }
 
         .hide {
           position: absolute;
