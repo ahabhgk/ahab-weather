@@ -55,6 +55,48 @@
         <p class="now-desc">现在的温度比较合适</p>
       </div>
     </div>
+
+    <div class="two-recent">
+      <div class="today">
+        <div class="line">
+          <div>今天</div>
+          <div class="today-temp"><span class="max"></span> / <span class="min"></span></div>
+        </div>
+        <div class="line">
+          <div class="today-weather">hah</div>
+          <span id="todayWeatherIcon" class="iconfont"></span>
+        </div>
+      </div>
+
+      <div class="divide-line"></div>
+
+      <div class="tomorrow">
+        <div class="line">
+          <div>明天</div>
+          <div class="tomorrow-temp"><span class="max"></span> / <span class="min"></span></div>
+        </div>
+        <div class="line">
+          <div class="tomorrow-weather">xiayu1</div>
+          <span id="tomorrowWeatherIcon" class="iconfont"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="hourly">
+      <div class="one-hour"></div>
+    </div> -->
+
+    <div class="chart">
+      <div class="chart-top">
+
+      </div>
+      <canvas id="myChart" width="500" height="136"></canvas>
+      <div class="chart-bottom">
+        
+      </div>
+    </div>
   </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 </body>
 </html>
