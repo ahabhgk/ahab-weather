@@ -67,6 +67,10 @@ async function displayResult(result) {
 
     const weekData = await GetDataUtil.weekData(result)
     displayWeek(weekData)
+
+    const hourlyData = await GetDataUtil.hourlyData(result)
+    displayHourly(hourlyData)
+
     cancel.click()
   } catch {
     alert('获取数据失败 😢...')
@@ -164,6 +168,7 @@ function displayHistory() {
 }
 
 
+// 第一次打开时的展示
 async function firstDisplay() {
   GetDataUtil.hotCity()
   displayHistory()
