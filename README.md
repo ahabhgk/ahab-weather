@@ -1,6 +1,6 @@
 # ahab-weather
 
-[ahabhgk.top/ahab-weather](ahabhgk.top/ahab-weather) 🔨
+[ahabhgk.github.io/ahab-weather](ahabhgk.github.io/ahab-weather) 
 
 **基本信息**  
 
